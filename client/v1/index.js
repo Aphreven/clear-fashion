@@ -19,6 +19,8 @@ console.log(MY_FAVORITE_BRANDS[0]);
 
 
 
+
+
 /**
  * 🌱
  * Let's go with a very very simple first todo
@@ -32,7 +34,8 @@ console.log(MY_FAVORITE_BRANDS[0]);
 // I can find on these e-shops
 // 2. Log the variable
 
-
+const cheapest_T_shirt='https://www.loom.fr/products/le-t-shirt';
+console.log(cheapest_T_shirt);
 
 
 
@@ -45,15 +48,34 @@ console.log(MY_FAVORITE_BRANDS[0]);
  * 👕
  */
 
+
 // 🎯 TODO: Number of products
 // 1. Create a variable and assign it the number of products
 // 2. Log the variable
+
+const numberOfProducts = marketplace.length;
+console.log(numberOfProducts);
+
 
 
 // 🎯 TODO: Brands name
 // 1. Create a variable and assign it the list of brands name only
 // 2. Log the variable
 // 3. Log how many brands we have
+
+const brand_names =[];
+for (const product of marketplace)
+{
+  if(!(brand_names.includes(product.brand)))
+  {
+    brand_names.push(product.brand);
+  }
+}
+
+const brandsList = marketplace.map(product => product.brand);
+console.log(new Set(brandsList));
+
+console.log(brand_names.length);
 
 
 // 🎯 TODO: Sort by price
@@ -62,21 +84,38 @@ console.log(MY_FAVORITE_BRANDS[0]);
 // 3. Log the variable
 
 
+const sortedByPrice=marketplace.sort(function(a,b){
+  return a.price-b.price;
+});
+
+console.log(sortedByPrice);
+
+
 // 🎯 TODO: Sort by date
 // 1. Create a function to sort the marketplace objects by products date
 // 2. Create a variable and assign it the list of products by date from recent to old
 // 3. Log the variable
 
-
+const sortDate= (a,b) =>a.date <b.date ? -1 : a.date ==b.date ? 0 :1;
+const sortedByDate = marketplace.sort(sortDate);
+console.log(sortedByDate);
 // 🎯 TODO: Filter a specific price range
 // 1. Filter the list of products between 50€ and 100€
 // 2. Log the list
+
+console.log(marketplace.filter(product=> product.price >50 && product.price <100));
 
 
 // 🎯 TODO: Average Basket
 // 1. Determine the average basket of the marketplace
 // 2. Log the average
 
+var total = 0;
+for(var i = 0; i < marketplace.length; i++) {
+    total += marketplace[i].price;
+}
+var avg = total / marketplace.length;
+console.log(avg);
 
 
 
@@ -105,10 +144,37 @@ console.log(MY_FAVORITE_BRANDS[0]);
 // 3. Log the number of products by brands
 
 
+const brands = {}
+for (const brand of brand_names)
+{
+  brands[brand]=[];
+}
+
+for (const product of marketplace)
+{
+  brands[product.brand].push(product);
+}
+console.log(brands);
+
+
 // 🎯 TODO: Sort by price for each brand
 // 1. For each brand, sort the products by price, from highest to lowest
 // 2. Log the sort
 
+
+console.log(brands["adresse"])
+
+
+for(const brand of brand_names)
+{
+  console.log(brand)
+  brands[brand].sort(function(a,b){
+  return a.price-b.price}).reverse(); 
+};
+
+brands["1083"].reverse()
+console.log(brands["1083"])
+console.log(brands)
 
 // 🎯 TODO: Sort by date for each brand
 // 1. For each brand, sort the products by date, from old to recent
@@ -128,6 +194,7 @@ console.log(MY_FAVORITE_BRANDS[0]);
 // 🎯 TODO: Compute the p90 price value
 // 1. Compute the p90 price value of each brand
 // The p90 value (90th percentile) is the lower value expected to be exceeded in 90% of the products
+
 
 
 
