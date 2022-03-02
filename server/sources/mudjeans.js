@@ -1,7 +1,5 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
-const {'v5': uuidv5} = require('uuid');
-const utils = require('../utils');
 
 const DEDICATED_BRAND = 'https://www.dedicatedbrand.com';
 
@@ -25,23 +23,8 @@ const parse = data => {
           .find('.productList-price')
           .text()
       );
-      const photo = $(element)
-        .find('.productList-image img')
-        .attr('src');
-      const date = utils.randomDate(new Date(2020, 1, 1), new Date()).toISOString().slice(0, 10);
-      const link = `${DEDICATED_BRAND}${$(element)
-        .find('.productList-link')
-        .attr('href')}`;
-      const _id = uuidv5(link, uuidv5.URL);
-      return {
-        name,
-        price,
-        brand: 'dedicated',
-        photo,
-        date,
-        link,
-        _id
-      };
+
+      return {name, price};
     })
     .get();
 };
@@ -93,22 +76,3 @@ module.exports.scrapeLinks = async (url = DEDICATED_BRAND) => {
 
   return null;
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
