@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AlozoR/clear-fashion.git"
+    "url": "git+https://github.com/Aphreven/clear-fashion.git"
   },
   "keywords": [
     "website"
@@ -19,9 +19,9 @@
   "author": "alozor",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/AlozoR/clear-fashion/issues"
+    "url": "https://github.com/Aphreven/clear-fashion/issues"
   },
-  "homepage": "https://github.com/AlozoR/clear-fashion#readme",
+  "homepage": "https://github.com/Aphreven/clear-fashion#readme",
   "devDependencies": {
     "eslint": "^7.18.0"
   },

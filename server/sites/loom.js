@@ -1,4 +1,4 @@
-const fetch = require('node-fetch');
+const axios = require('axios');
 const cheerio = require('cheerio');
 const {'v5': uuidv5} = require('uuid');
 
@@ -38,26 +38,15 @@ const parse = data => {
     .get();
 };
 
-/**
- * Scrape all the products for a given url page
- * @param  {[type]}  url
- * @return {Array|null}
- */
 module.exports.scrape = async url => {
-  try {
-    const response = await fetch(url);
+  const response = await axios(url);
+  const {data, status} = response;
 
-    if (response.ok) {
-      const body = await response.text();
-
-      return parse(body);
-    }
-
-    console.error(response);
-
-    return null;
-  } catch (error) {
-    console.error(error);
-    return null;
+  if (status >= 200 && status < 300) {
+    return parse(data);
   }
+
+  console.error(status);
+
+  return null;
 };
