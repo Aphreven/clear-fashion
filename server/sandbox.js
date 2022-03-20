@@ -1,6 +1,6 @@
 /* eslint-disable no-console, no-process-exit */
-const dedicatedbrand = require('./dedicatedbrand');
-const adresse = require('./adresse');
+const dedicatedbrand = require('./sources/dedicatedbrand');
+const adresse = require('./sources/adresse');
 const fs = require('fs');
 
 async function sandbox() {
