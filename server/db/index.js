@@ -104,5 +104,26 @@ module.exports.findAndSort = async (query, sort) => {
   }
 };
 
+module.exports.findSortAndLimit = async (query, sort, limit) => {
+  try {
+    const db = await getDB();
+    const collection = db.collection(MONGODB_COLLECTION);
+    const result = await collection.find(query).sort(sort).limit(limit).toArray();
 
+    return result;
+  } catch (error) {
+    console.error('🚨 collection.find...', error);
+    return null;
+  }
+};
+
+/**
+ * Close the connection
+ */
+module.exports.close = async () => {
+  try {
+    await client.close();
+  } catch (error) {
+    console.error('🚨 MongoClient.close...', error);
+  }
 };
